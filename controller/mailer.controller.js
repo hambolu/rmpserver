@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 
 const mailOptions = {
    from: "example@gmail.com",
-   to: "example@example.com",
+   to: "henryhambolu@gmail.com",
    subject: "Nodemailer Test",
    test: " New Notary"+
    ",\n\n" +
@@ -31,9 +31,9 @@ const mailOptions = {
 
 transporter.sendMail(mailOptions, function(error, info){
    if(error){
-      console.log(error);
+      res.status(500).send(error);
    }else{
-      console.log("Email sent: " + info.response);
+      res.status(200).send("Email sent: " + info.response);
    }
 });
 }
