@@ -14,6 +14,7 @@ const mailOptions = {
    to: "example@example.com",
    subject: "Nodemailer Test",
    test: " New Notary"+
+   ",\n\n" +
    req.body.fname +
    ",\n\n" +
    req.body.mname+
