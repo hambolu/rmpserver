@@ -25,7 +25,7 @@ const mailOptions = {
    ",\n\n" +
    req.body.phone +
    ",\n\n" +
-   req.files
+   req.file.filename
    
 };
 
