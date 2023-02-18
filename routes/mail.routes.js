@@ -19,4 +19,19 @@ const storage = multer.diskStorage({
       mailcontroller.sendmail
     );
 
+    // app.post('/api/email', upload.array('attachment', 4), function(req, res, next) {
+    //     var attachementList = [];
+    //     for (var i = 0; i < req.files.length; i++) {
+    //         attachementList.push({
+    //             filename: req.files[i].originalname,
+    //             path: req.files[i].path
+    //         })}
+    //     var mailOptions = {
+    //         to: req.body.to,
+    //         from: req.body.from,
+    //         subject: req.body.subject,
+    //         text: req.body.text,
+    //         attachments: attachementList}
+    //         mailer.sendMail(mailOptions, function(err, res) {if (err) {console.log(err);}console.log(res);});});
+
   }

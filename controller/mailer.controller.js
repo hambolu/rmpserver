@@ -1,4 +1,7 @@
 const nodemailer = require("nodemailer");
+const dotenv = require("dotenv");
+dotenv.config();
+
 exports.sendmail = (req, res) =>{
 
 const transporter = nodemailer.createTransport({
@@ -8,32 +11,38 @@ const transporter = nodemailer.createTransport({
      pass: process.env.NODEMAILER,
    },
 });
-
+var attachementList = [];
+        for (var i = 0; i < req.files.length; i++) {
+            attachementList.push({
+                filename: req.files[i].originalname,
+                path: req.files[i].path
+            })}
 const mailOptions = {
    from: "example@gmail.com",
    to: "henryhambolu@gmail.com",
-   subject: "Nodemailer Test",
-   test: " New Notary"+
-   ",\n\n" +
-   req.body.fname +
-   ",\n\n" +
-   req.body.mname+
-   ",\n\n" +
-   req.body.lname+
-   ",\n\n" +
-   req.body.email+
-   ",\n\n" +
-   req.body.phone +
-   ",\n\n" +
-   req.file.filename
-   
+   subject: "NOTARY APP SUBMITION",
+   text: " New Notary"+
+   ",\n" +
+   "First Name: "+req.body.fname +
+   ",\n" +
+   "Middle Name: "+req.body.mname+
+   ",\n" +
+   "Last Name: "+req.body.lname+
+   ",\n" +
+   "Email: "+req.body.email+
+   ",\n" +
+   "First Name :"+req.body.phone +
+   ",\n" +
+   "Attached with this mail is the are document submitted by the user.. ",
+   attachments: attachementList,
+
 };
 
 transporter.sendMail(mailOptions, function(error, info){
    if(error){
       res.status(500).send(error);
    }else{
-      res.status(200).send("Email sent: " + info.response);
+      res.status(200).send("Email sent Successfully ");
    }
 });
 }
