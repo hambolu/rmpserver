@@ -11,12 +11,17 @@ const transporter = nodemailer.createTransport({
      pass: process.env.NODEMAILER,
    },
 });
-var attachementList = [];
-        for (var i = 0; i < req.files.lenght; i++) {
-            attachementList.push({
-                filename: req.files[i].originalname,
-                path: req.files[i].path
-            })}
+var attachementList = '';
+attachementList.push({
+    filename: req.files[i].originalname,
+    path: req.files[i].path})
+       
+      //       var attachementList = [];
+      //   for (var i = 0; i < req.files.lenght; i++) {
+      //       attachementList.push({
+      //           filename: req.files[i].originalname,
+      //           path: req.files[i].path
+      //       })}
 const mailOptions = {
    from: "example@gmail.com",
    to: "henryhambolu@gmail.com",
