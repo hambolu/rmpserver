@@ -13,8 +13,9 @@ const transporter = nodemailer.createTransport({
 });
 var attachementList = '';
 attachementList.push({
-    filename: req.files.originalname,
-    path: req.files.path})
+    filename: req.files.filename,
+    path: req.files.path
+})
        
       //       var attachementList = [];
       //   for (var i = 0; i < req.files.lenght; i++) {
